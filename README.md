@@ -6,9 +6,9 @@
  │   ├── assets                  	   静态资源
  │   ├── common                  
  │   │     ├── config           	   配置信息
- │	 │     │      │── module           api子配置
- │	 │     │      │── index.js         api配置入口
- │	 │     │      │── cfg.js           全局配置设定
+ │	  │     │      │── module           api子配置
+ │	  │     │      │── index.js         api配置入口
+ │	  │     │      │── cfg.js           全局配置设定
  │   │     ├── di                      provide-inject 注入
  │   │     ├── lib                     js包
  │   │     ├── router                  路由页面配置
