@@ -1,0 +1,29 @@
+{
+  "name": "fast-vue3",
+  "version": "1.0.0",
+  "scripts": {
+    "devg": "vite --debug --watch",
+    "dev": "vite --watch",
+    "build": "vite build --debug",
+    "serve": "serve dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imbacc/fast-vue3.git"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "js-md5": "^0.7.3",
+    "qs": "^6.9.4",
+    "vue": "^3.0.0-rc.1",
+    "vue-router": "^4.0.0-beta.11",
+    "vuex": "^4.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^4.5.6",
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "require-context": "^1.1.0",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "vite": "^1.0.0-rc.1"
+  }
+}
