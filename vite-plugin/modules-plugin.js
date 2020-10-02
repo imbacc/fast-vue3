@@ -3,6 +3,7 @@ const requireContext = require('require-context')
 const path = require('path')
 const { Readable } = require('stream')
 
+// 用于读取 config router store 下module的子配置信息
 const fs_fun = (name) => {
 	let url = `/common/${name}/index.js`,dir = `./src/common/${name}/module`, modules = [],names = []
 	fs.readdirSync(dir).map((f) => {
@@ -30,7 +31,7 @@ const readBody = async (stream) => {
 
 // 导出插件
 export default () => {
-	const fs_name = ['config', 'store', 'router']
+	const fs_name = ['config', 'router', 'store']
 	const check = {}
 	const namelist = {}
 	for (let name of fs_name) {
