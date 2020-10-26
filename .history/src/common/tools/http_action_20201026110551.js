@@ -44,7 +44,7 @@ const http_action = async (api, param = {}, body = {}, req_type = 'POST', onec =
 	
 	if (api && api.indexOf(':id') !== -1) {
 		if (param['_id'] === undefined) {
-			console.error(`${api} 没有传参数ID 格式 param -> { _id: 10086 }`)
+			console.error(`${api} 没有传参数ID 格式 -> param { _id: 10086 } ...`)
 			return false
 		}
 		api = api.replace(':id', param['_id'])

@@ -15,13 +15,15 @@ const get_args = (json = {}, cur = [1, 10]) => {
 //封装的get post请求
 /**
  * @param {api}		请求API地址
- * @param {param}	追加参数(_cache 缓存时间 默认为0 分钟单位) (_page 是否分页)
+ * @param {param}	追加参数
  * @param {body}	表单数据
+ * @param {page}	是否分页
+ * @param {cache} 缓存时间 默认为0 分钟单位
  * @param {type}	默认请求类型type为是post请求
  * @param {onec}	外链请求
  */
-const http_action = async (api, param = {}, body = {}, req_type = 'POST', onec = false) => {
-	let cache_time = 0
+const http_action = async (api, param = {}, body = {}, is_page = false, cache_time = 0, req_type = 'POST', onec = false) => {
+
 	if (api && !onec) {
 		if (api.constructor === String && api.length > 0) api = api_name[api]
 		if (api.constructor === Array && api.length > 0) {
@@ -32,19 +34,10 @@ const http_action = async (api, param = {}, body = {}, req_type = 'POST', onec =
 		}
 	}
 
-	if (param['_page']) {
-		param = get_args(param, param['_page'])
-		delete param['_page']
-	}
-
-	if (param['_cache']) {
-		cache_time = param['_cache']
-		delete param['_cache']
-	}
-	
+	if (is_page) param = get_args(param, is_page)
 	if (api && api.indexOf(':id') !== -1) {
 		if (param['_id'] === undefined) {
-			console.error(`${api} 没有传参数ID 格式 param -> { _id: 10086 }`)
+			console.error('没有传参ID...')
 			return false
 		}
 		api = api.replace(':id', param['_id'])

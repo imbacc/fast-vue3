@@ -65,7 +65,7 @@ http.interceptors.response.use((response) => {
 	// 对响应错误做点什么
 	const err = error.toString()
 
-  	if (env === 'development') console.log(err) // for debug
+  if (env === 'development') console.log(err) // for debug
 
 	// 回滚中断请求
 	if (err.indexOf('_roolback_') !== -1) {

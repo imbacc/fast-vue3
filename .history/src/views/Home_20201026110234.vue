@@ -14,16 +14,11 @@
 		components: {
 			HelloWorld
 		},
-		setup(props, context) {
-			const { ctx } = getCurrentInstance()
+		setup() {
+			const ctx = getCurrentInstance()
 
 			onMounted(()=>{
-				ctx.is_action('app_111', {}, {})
-				ctx.is_action('app_222', { _id: 1111 }, {})
-				ctx.is_action('app_333', { _id: 1111 }, {}, 'GET')
-				ctx.is_action('app_444', {}, {}, 'GET')
-				ctx.is_action('app_555', {}, {})
-				ctx.is_action('app_666', { _id: 1111 }, {})
+				ctx.is_action('app_111')
 			})
 		}
 	}
