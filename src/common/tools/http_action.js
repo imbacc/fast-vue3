@@ -22,6 +22,7 @@ const get_args = (json = {}, cur = [1, 10]) => {
  */
 const http_action = async (api, param = {}, body = {}, req_type = 'POST', onec = false) => {
 	let cache_time = 0
+	
 	if (api && !onec) {
 		if (api.constructor === String && api.length > 0) api = api_name[api]
 		if (api.constructor === Array && api.length > 0) {
@@ -53,20 +54,20 @@ const http_action = async (api, param = {}, body = {}, req_type = 'POST', onec =
 
 	let key_api = `${api}?${qs.stringify(param)}`
 	const body_md5 = md5(qs.stringify(body))
-	const sum_body = key_api + 'bodymd5=' + body_md5
+	const sum_body = `${key_api}?bodymd5=${body_md5}`
 
 	if (key_api.length === key_api.lastIndexOf('?') + 1) key_api = key_api.substring(0, key_api.length - 1)
 
 	if (cache_time > 0) {
-		let cache = is_cache.get_cache('cache_' + sum_body)
+		const cache = is_cache.get_cache('cache_' + sum_body)
 		console.log('cache service:' + api, cache)
 		if (cache) return cache
 	}
 
-	let is_http = http_intercept[req_type.toLocaleLowerCase()](key_api, body)
+	const is_http = http_intercept[req_type.toLocaleLowerCase()](key_api, body)
 
 	return await is_http.then((res) => {
-		if (res === 'false') return false
+		if (res === false) return false
 		if (cache_time > 0 && res) is_cache.set_cache('cache_' + sum_body, res, cache_time)
 		if (cache_time === 0 && res) is_cache.del_cache('cache_' + sum_body)
 		console.log('service:' + key_api, res)
