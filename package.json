@@ -2,8 +2,8 @@
   "name": "fast-vue3",
   "version": "1.0.0",
   "scripts": {
-    "devg": "vite --debug --watch",
     "dev": "vite --watch",
+    "debug": "vite --debug --watch",
     "build": "vite build --debug",
     "serve": "serve dist"
   },
